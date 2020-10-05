@@ -876,7 +876,9 @@ void G_Ticker (void)
 	  case ga_loadgame: 
 	    G_DoLoadGame (); 
 	    break; 
-	  case ga_savegame: 
+	  case ga_savegame:
+        gameaction = ga_nothing;
+        break;
 	    G_DoSaveGame (); 
 	    break; 
 	  case ga_playdemo: 
@@ -1608,7 +1610,9 @@ G_SaveGame
 }
 
 void G_DoSaveGame (void) 
-{ 
+{
+    return;
+    
     char *savegame_file;
     char *temp_savegame_file;
     char *recovery_savegame_file;
@@ -1672,8 +1676,8 @@ void G_DoSaveGame (void)
     // Now rename the temporary savegame file to the actual savegame
     // file, overwriting the old savegame if there was one there.
 
-    remove(savegame_file);
-    rename(temp_savegame_file, savegame_file);
+    // remove(savegame_file);
+    // rename(temp_savegame_file, savegame_file);
     
     gameaction = ga_nothing;
     M_StringCopy(savedescription, "", sizeof(savedescription));
@@ -2251,12 +2255,12 @@ boolean G_CheckDemoStatus (void)
 	 
     if (timingdemo) 
     { 
-        float fps;
+        int fps;
         int realtics;
 
 	endtime = I_GetTime (); 
         realtics = endtime - starttime;
-        fps = ((float) gametic * TICRATE) / realtics;
+        fps = ( gametic * TICRATE) / realtics;
 
         // Prevent recursive calls
         timingdemo = false;

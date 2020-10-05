@@ -225,8 +225,13 @@ STlib_updateMultIcon
 
 	    V_CopyRect(x, y-ST_Y, st_backing_screen, w, h, x, y);
 	}
+    //printf("Draw Patch: %d %d %lx %lx\n", mi->x, mi->y, *mi->inum, mi->p[*mi->inum]);
+    if (mi->p[*mi->inum]) {
 	V_DrawPatch(mi->x, mi->y, mi->p[*mi->inum]);
 	mi->oldinum = *mi->inum;
+    } else {
+        *mi->inum = mi->oldinum;
+    }
     }
 }
 

@@ -21,6 +21,7 @@ static unsigned char convertToDoomKey(unsigned char key)
 {
 	switch (key)
 	{
+		printf("key %d", key);
 	case VK_RETURN:
 		key = KEY_ENTER;
 		break;

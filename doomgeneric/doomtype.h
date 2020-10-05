@@ -32,7 +32,7 @@
 
 #else
 
-#include <strings.h>
+//#include <strings.h>
 
 #endif
 
@@ -60,28 +60,17 @@
 // pre-standardisation version).  inttypes.h is also in the C99 
 // standard and defined to include stdint.h, so include this. 
 
-#include <inttypes.h>
-
-#ifdef __cplusplus
-
-// Use builtin bool type with C++.
+//#include <inttypes.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <limits.h>
 
 typedef bool boolean;
 
-#else
-
-typedef enum 
-{
-    false	= 0,
-    true	= 1,
-	undef	= 0xFFFFFFFF
-} boolean;
-
-#endif
-
 typedef uint8_t byte;
 
-#include <limits.h>
+// #include <limits.h>
 
 #ifdef _WIN32
 

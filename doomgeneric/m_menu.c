@@ -1712,6 +1712,7 @@ boolean M_Responder (event_t* ev)
         }
         else if (key == key_menu_qsave)    // Quicksave
         {
+            return true;
 	    S_StartSound(NULL,sfx_swtchn);
 	    M_QuickSave();
 	    return true;
